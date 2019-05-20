@@ -11,6 +11,12 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/test_endpoint', ['middleware' => 'client', function (Request $request) {
+    dd(Request::all());
+}]);
